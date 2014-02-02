@@ -1,0 +1,14 @@
+{
+    "name": "lsroudi/training",
+    "description": "PHP training sessions",
+    "require": {
+        "phpunit/phpunit": "3.7.*"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "lsroudi",
+            "email": "lsroudi@gmail.com"
+        }
+    ]
+}
