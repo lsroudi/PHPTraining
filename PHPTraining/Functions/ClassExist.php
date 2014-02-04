@@ -8,33 +8,62 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-// Exist.php
-$classname = "Exist";
-$path = "Classes/{$classname}.php";
+class ClassExist {
 
-
-try {
-    if (!file_exists($path)){
-        throw new Exception("No such file as {$path}");
-    }
-} catch (Exception $exc) {
-    echo $exc->getMessage();
-}
-
-require_once( $path );
-
-try {
-    $qclassname = "Functions\\Classes\\$classname";
-    if (!class_exists($qclassname))
+    public function findFile($file)
     {
-        throw new Exception("No such class as $qclassname");
+        $path = "Classes/{$file}.php";
+        try {
+            if (!file_exists($path))
+            {
+                throw new Exception("No such file as {$path}");
+            }
+        } catch (Exception $e) {
+            // Log this Event
+
+            return false;
+        }
+
+        return $path;
     }
-} catch (Exception $exc) {
-    echo $exc->getMessage();
+
+    public function findClass($class)
+    {
+        try {
+            $classname = "Functions\\Classes\\$class";
+            if (!class_exists($classname))
+            {
+                throw new Exception("No such class as $classname");
+            }
+        } catch (Exception $e) {
+            // Log this Event
+
+            return false;
+        }
+
+        return $classname;
+    }
+
 }
 
 
-$myObj = new $qclassname();
-$myObj->doSpeak();
+
+
+
+
+$myObj = new ClassExist();
+$path = $myObj->findFile('Exist');
+
+if (false !== $path){
+    require_once( $path );
+    $classExist = $myObj->findClass('Exist');
+    if (false !== $classExist){
+        $class = new $classExist();
+        $class->doSpeak();
+    }
+}
+
+$tab = get_declared_classes();
+print(var_dump(in_array('Functions\Classes\Exist',$tab))); // true
 ?>
 
