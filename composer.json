@@ -10,5 +10,9 @@
             "name": "lsroudi",
             "email": "lsroudi@gmail.com"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-0": {"Training\\": "PHPTraining/"}
+       
+    }
 }
