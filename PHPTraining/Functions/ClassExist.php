@@ -46,24 +46,26 @@ class ClassExist {
 
 }
 
-
-
-
-
-
 $myObj = new ClassExist();
-$path = $myObj->findFile('Exist');
+if (in_array('findFile', get_class_methods($myObj))){
+    $path = $myObj->findFile('Exist');
+}
 
-if (false !== $path){
+
+if (false !== $path)
+{
     require_once( $path );
     $classExist = $myObj->findClass('Exist');
-    if (false !== $classExist){
+    if (false !== $classExist)
+    {
         $class = new $classExist();
-        $class->doSpeak();
+        $class->doSpeak(); // hello
     }
 }
 
 $tab = get_declared_classes();
-print(var_dump(in_array('Functions\Classes\Exist',$tab))); // true
+print(var_dump(in_array('Functions\Classes\Exist', $tab))); // true
+
+var_dump();
 ?>
 
