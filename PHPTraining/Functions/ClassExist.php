@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 class ClassExist {
+    
+    public $publicproperty = NULL;
 
     public function findFile($file)
     {
@@ -68,6 +70,7 @@ if (false !== $path)
 
 $tab = get_declared_classes();
 print(var_dump(in_array('Functions\Classes\Exist', $tab))); // true
+print_r(var_dump(get_class_vars('ClassExist'))); // array (size=1) 'publicproperty' => null
 
 
 ?>
