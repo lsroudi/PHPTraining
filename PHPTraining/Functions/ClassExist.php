@@ -55,7 +55,10 @@ if (in_array('findFile', get_class_methods($myObj))){
 if (false !== $path)
 {
     require_once( $path );
-    $classExist = $myObj->findClass('Exist');
+    if(is_callable(array($myObj,'findClass'))){
+        $classExist = $myObj->findClass('Exist');       
+    }
+
     if (false !== $classExist)
     {
         $class = new $classExist();
@@ -66,6 +69,6 @@ if (false !== $path)
 $tab = get_declared_classes();
 print(var_dump(in_array('Functions\Classes\Exist', $tab))); // true
 
-var_dump();
+
 ?>
 
