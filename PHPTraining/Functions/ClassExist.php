@@ -8,16 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-class ClassExist {
+class Base {
     
+}
+
+class ClassExist extends Base {
+
     public $publicproperty = NULL;
 
     public function findFile($file)
     {
         $path = "Classes/{$file}.php";
         try {
-            if (!file_exists($path))
-            {
+            if (!file_exists($path)){
                 throw new Exception("No such file as {$path}");
             }
         } catch (Exception $e) {
@@ -33,8 +36,7 @@ class ClassExist {
     {
         try {
             $classname = "Functions\\Classes\\$class";
-            if (!class_exists($classname))
-            {
+            if (!class_exists($classname)){
                 throw new Exception("No such class as $classname");
             }
         } catch (Exception $e) {
@@ -49,16 +51,16 @@ class ClassExist {
 }
 
 $myObj = new ClassExist();
-if (in_array('findFile', get_class_methods($myObj))){
+if (in_array('findFile', get_class_methods($myObj)))
+{
     $path = $myObj->findFile('Exist');
 }
 
 
-if (false !== $path)
-{
+if (false !== $path){
     require_once( $path );
-    if(is_callable(array($myObj,'findClass'))){
-        $classExist = $myObj->findClass('Exist');       
+    if (is_callable(array($myObj, 'findClass'))){
+        $classExist = $myObj->findClass('Exist');
     }
 
     if (false !== $classExist){
@@ -71,8 +73,5 @@ $tab = get_declared_classes();
 print_r(var_dump(in_array('Functions\Classes\Exist', $tab))); // true
 
 print_r(var_dump(get_class_vars('ClassExist'))); // array (size=1) 'publicproperty' => null
-
-
-
 ?>
 
