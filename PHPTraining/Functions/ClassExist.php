@@ -73,5 +73,7 @@ $tab = get_declared_classes();
 print_r(var_dump(in_array('Functions\Classes\Exist', $tab))); // true
 
 print_r(var_dump(get_class_vars('ClassExist'))); // array (size=1) 'publicproperty' => null
+print_r(get_parent_class('ClassExist')) ; // Base
+
 ?>
 
