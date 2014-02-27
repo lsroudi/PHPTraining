@@ -8,11 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
+interface BaseInterface {
+    
+}
 class Base {
     
 }
 
-class ClassExist extends Base {
+class ClassExist extends Base  implements BaseInterface{
 
     public $publicproperty = NULL;
 
@@ -77,6 +81,9 @@ print_r(get_parent_class('ClassExist')) ; // Base
 
 if ( is_subclass_of( $myObj, 'Base' ) ) {
 print "ClassExist is a subclass of Base";
+}
+if ( in_array( 'BaseInterface', class_implements( $myObj )) ) {
+print "ClassExist is an interface of BaseInterface";
 }
 
 
