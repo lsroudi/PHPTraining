@@ -51,7 +51,11 @@ class ClassExist extends Base  implements BaseInterface{
 
         return $classname;
     }
-
+    
+    public function verifyCallFunctionMethod()
+    {
+        return "method is called";
+    }
 }
 
 $myObj = new ClassExist();
@@ -85,6 +89,16 @@ print "ClassExist is a subclass of Base";
 if ( in_array( 'BaseInterface', class_implements( $myObj )) ) {
 print "ClassExist is an interface of BaseInterface";
 }
+
+// Invode a function
+function tocallfunction(){
+    return 'function executed';
+}
+$return = call_user_func("tocallfunction"); 
+echo $return; // function executed
+
+$returntwo = call_user_func( array( $myObj, "verifyCallFunctionMethod") );
+echo $returntwo; // function executed
 
 
 ?>
