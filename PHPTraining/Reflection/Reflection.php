@@ -9,16 +9,21 @@
  * file that was distributed with this source code.
  */
 
+namespace Reflections;
+
 class ReflectionTest {
     //put your code here
-//    public function __toString()
-//    {
-//        echo 'my name is ReflectionTest';
-//    }
+    public function __toString()
+    {
+        echo 'my name is ReflectionTest';
+    }
 }
 
-$classreflection = new ReflectionClass( 'ReflectionTest' );
-Reflection::export($classreflection);
+
+$classreflection = new \ReflectionClass('Reflections\ReflectionTest');
+
+\Reflection::export($classreflection);
+var_dump(get_class_methods($classreflection)); 
 
 ?>
 
